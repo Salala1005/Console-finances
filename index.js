@@ -87,22 +87,22 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
-
+// ==================================================================
 // The total number of months included in the dataset. 
 var totalMonths = finances.length;
-
 var netTotalProfitAndLosses = 0;
 i = 0
 for (i = 0; i < finances.length; i++) {
   netTotalProfitAndLosses += finances[i][1]
   finances[i][2] = netTotalProfitAndLosses
 }
-// console.log(finances)
+console.log(totalMonths)
+console.log("$ " + netTotalProfitAndLosses)
 
-
-
-
-// The average of the changes in Profit/Losses over the entire period
+// ==================================================================
+// The average of the changes in Profit/Losses over the entire period.
+// totalMonths -1 ===> when calculating current month - previous month, 
+// need to take 1 month away.
 finances[0][3] = 0
 var profitAndLossesChanges = []
 for (i = 0; i < totalMonths - 1; i++) {
@@ -111,17 +111,21 @@ for (i = 0; i < totalMonths - 1; i++) {
 }
 console.log(finances)
 
+// to sum profit and losses changes
 profitAndLossesChangesTotal = 0
 for (i = 0; i < totalMonths - 1; i++) {
   profitAndLossesChangesTotal += profitAndLossesChanges[i]
 }
-// // console.log(profitAndLossesChangesTotal)
+// console.log(profitAndLossesChangesTotal)
 
+// =========================================================================
+// to find average of profit and losses changes
 var averageProfitAndLossesChanges
 averageProfitAndLossesChanges = profitAndLossesChangesTotal / (totalMonths - 1)
 averageProfitAndLossesChanges = averageProfitAndLossesChanges.toFixed(2)
-// // console.log(averageProfitAndLossesChanges)
+console.log(averageProfitAndLossesChanges)
 
+// ==========================================================================
 // The greatest increase in Profit/Losses (date and amount) over the entire period.
 // console.log(profitAndLossesChanges)
 var greatestIncrease = profitAndLossesChanges[0]
@@ -139,13 +143,14 @@ for (i = 0; i < totalMonths; i++) {
 // console.log('========')
 }
 
+// To show the greatest increase date
 for (i = 0; i < totalMonths; i++) {
   if (greatestIncrease === finances[i][3]) {
-    console.log("The greatest increase of: " + greatestIncrease + "$ happened on " + finances[i][0])
+    console.log("The greatest increase of: $ " + greatestIncrease + " happened on " + finances[i][0])
   }
 }
 
-
+// ============================================================================
 // The greatest decrease in Profit/Losses (date and amount) over the entire period.
 var greatestDecrease = profitAndLossesChanges[0]
 for (i = 0; i < totalMonths; i++) {
@@ -163,7 +168,7 @@ for (i = 0; i < totalMonths; i++) {
 // To show the greatest decrease date
 for (i = 0; i < totalMonths; i++) {
   if (greatestDecrease === finances[i][3]) {
-    console.log("The greatest decrease of: " + greatestDecrease + "$ happened on " + finances[i][0])
+    console.log("The greatest decrease of: $ " + greatestDecrease + " happened on " + finances[i][0])
   }
 }
 
